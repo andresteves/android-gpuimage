@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
+    namespace "jp.co.cyberagent.android.gpuimage.sample"
     compileSdkVersion COMPILE_SDK_VERSION as int
 
     defaultConfig {
@@ -25,12 +26,9 @@ android {
         }
     }
 }
-repositories {
-//     maven { url = "https://oss.sonatype.org/content/repositories/snapshots"}
-}
 
 dependencies {
     implementation project(':library')
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
