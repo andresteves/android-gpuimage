@@ -27,8 +27,24 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
+}
+
 dependencies {
     implementation project(':library')
     implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+kotlin {
+    jvmToolchain(17)
 }
