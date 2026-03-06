@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 android {
     namespace "jp.co.cyberagent.android.gpuimage"
@@ -33,8 +34,28 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+        }
+    }
 }
 
 dependencies {
     implementation 'com.github.jitpack:gradle-simple:1.0'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = 'jp.co.cyberagent.android.gpuimage'
+                artifactId = 'library'
+                version = '2.1.1'
+
+                from components.release
+            }
+        }
+    }
 }
